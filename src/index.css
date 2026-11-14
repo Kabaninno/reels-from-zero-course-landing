@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f6f3ea;
+  --color-paper-2: #ece8db;
+  --color-ink: #0b0b0b;
+  --color-lime: #c8ff1a;
+  --color-lime-deep: #b2ea00;
+  --color-pink: #ff7ad9;
+  --color-orange: #ff9a3c;
+  --color-violet: #7b5cff;
+
+  --font-display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --shadow-hard-sm: 3px 3px 0 0 #0b0b0b;
+  --shadow-hard: 5px 5px 0 0 #0b0b0b;
+  --shadow-hard-lg: 8px 8px 0 0 #0b0b0b;
+
+  --animate-marquee: marquee 34s linear infinite;
+  --animate-float: float 5s ease-in-out infinite;
+  --animate-disc: disc-spin 6s linear infinite;
+  --animate-progress: progress 7s linear infinite;
+  --animate-pop: pop 0.45s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+  --animate-fade-in: fade-in 0.25s ease-out both;
+  --animate-rise: rise 0.35s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes disc-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes progress {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  @keyframes pop {
+    from {
+      transform: scale(0.4);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes rise {
+    from {
+      transform: translateY(24px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+    min-width: 320px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  ::selection {
+    background: var(--color-lime);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+}
+
+.bg-dots {
+  background-image: radial-gradient(rgba(11, 11, 11, 0.14) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
